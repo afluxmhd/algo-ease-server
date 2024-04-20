@@ -17,4 +17,3 @@ class StrategyModel(BaseModel):
     max_profit: float
     risk_reward: float
 
-#AIzaSyAL3EzqWNNCjzZKct0BmKUZIaRruNrln-o
