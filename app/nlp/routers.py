@@ -22,6 +22,6 @@ async def submit_strategy(strategy: Strategy):
         "risk_reward": 2.0
     }
    
-    return StrategyModel()
+    return StrategyModel
 
 
