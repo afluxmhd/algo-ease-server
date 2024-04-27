@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from app.nlp.routers import router as nlp_router
+from app.strategy.routers import router as nlp_router
 from app.stocks.routers import router as stocks_router
 
 app = FastAPI()
