@@ -5,7 +5,7 @@ from .models import Strategy, StrategyModel
 
 router = APIRouter()
 
-@router.post("/strategy/submit", response_model=StrategyModel,include_in_schema=False)
+@router.post("/strategy/interpret", response_model=StrategyModel,include_in_schema=False)
 async def submit_strategy(strategy: Strategy):
 
     processed_strategy_data = {
@@ -22,6 +22,6 @@ async def submit_strategy(strategy: Strategy):
         "risk_reward": 2.0
     }
    
-    return StrategyModel()
+    return StrategyModel(**processed_strategy_data)
 
 
