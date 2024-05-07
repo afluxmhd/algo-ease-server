@@ -11,4 +11,4 @@ history = [
     
 instruction = "\nGenerate JSON for the provided strategy using the following keys:\n"\
                  "scrip, action, entry, exit, entry_time, exit_time, quantity, risk, max_loss, max_profit, risk_reward"\
-                 " If parameter values are not available, assign empty strings.,the risk parameter should be percentage float value, the action either BUY or SELL"
+                 " If parameter values are not available, assign empty strings.,the risk parameter should be percentage float value, the action either BUY or SELL, the time format should be millisecondsSinceEpoch"
