@@ -9,8 +9,8 @@ class StrategyModel(BaseModel):
     action: str
     entry: float
     exit: float
-    entry_time: str
-    exit_time: str
+    entry_time: int
+    exit_time: int
     quantity: int
     risk: float
     max_loss: float
