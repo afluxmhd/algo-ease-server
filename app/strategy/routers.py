@@ -5,6 +5,7 @@ from .models import Strategy, StrategyModel,StrategyDescription
 from .gemini.gemini import Gemini
 from .data_extraction import DataClean
 from .strategy_config import history,instruction
+from .date_utils import date_modify
 import json
 
 
@@ -15,8 +16,10 @@ router = APIRouter()
 async def submit_strategy(strategy: Strategy):
 
     # insufficient data
-    if len(strategy.strategy) < 20 :
-        raise HTTPException(status_code=404, detail="Insufficient prompt. Please provide a prompt with at least 25 characters")
+    words = strategy.strategy.split()
+    print(words)
+    if len(words) < 10 :
+        raise HTTPException(status_code=400, detail="Insufficient prompt. Please provide a prompt with at least 25 characters")
     
                  
     # Instance of gemini class
@@ -25,13 +28,20 @@ async def submit_strategy(strategy: Strategy):
     data_clean  = DataClean()
     pure_res = data_clean.remove_noise(string=response)
     res_dict = {key: value for key, value in json.loads(pure_res).items()}
+    
+    # Instanse of date_modify class
+    datemodify = date_modify()
+    entryT = datemodify.enforce_iso8601(res_dict["entry_time"])
+    exitT = datemodify.enforce_iso8601(res_dict["exit_time"])
+    
+    
     processed_strategy_data = {
         "scrip": res_dict.get("scrip", ""),
         "action": res_dict.get("action", ""),
         "entry": -1 if res_dict["entry"]=="" else float(res_dict["entry"]),
         "exit": -1 if res_dict["exit"]=="" else float(res_dict["exit"]),
-        "entry_time": res_dict.get("entry_time", ""),
-        "exit_time": res_dict.get("exit_time", ""),
+        "entry_time": entryT,
+        "exit_time": exitT,
         "quantity": 1 if res_dict["quantity"]=="" else int(res_dict["quantity"]),
         "risk": -1 if res_dict["risk"]=="" else float(res_dict["risk"]),
         "max_loss": -1 if res_dict["max_loss"]=="" else float(res_dict["max_loss"]),
