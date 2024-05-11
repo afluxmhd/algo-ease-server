@@ -2,27 +2,55 @@ from fastapi import APIRouter, HTTPException
 from random import uniform
 from datetime import datetime
 from .models import Strategy, StrategyModel,StrategyDescription
+from .gemini.gemini import Gemini
+from .data_extraction import DataClean
+from .strategy_config import history,instruction
+from .date_utils import date_modify
+import json
+
+
 
 router = APIRouter()
 
 @router.post("/strategy/interpret", response_model=StrategyModel,include_in_schema=False)
 async def submit_strategy(strategy: Strategy):
 
+    # insufficient data
+    words = strategy.strategy.split()
+    print(words)
+    if len(words) < 10 :
+        raise HTTPException(status_code=400, detail="Insufficient prompt. Please provide a prompt with at least 25 characters")
+    
+                 
+    # Instance of gemini class
+    gemini = Gemini()
+    response = gemini.send_prompt(strategy.strategy,history=history,instruction=instruction)
+    data_clean  = DataClean()
+    pure_res = data_clean.remove_noise(string=response)
+    res_dict = {key: value for key, value in json.loads(pure_res).items()}
+    
+    # Instanse of date_modify class
+    datemodify = date_modify()
+    entryT = datemodify.enforce_iso8601(res_dict["entry_time"])
+    exitT = datemodify.enforce_iso8601(res_dict["exit_time"])
+    
+    
     processed_strategy_data = {
-        "scrip": "AAPL",
-        "action": "Buy",
-        "entry": 150.0,
-        "exit": 160.0,
-        "entry_time": "2024-04-20 09:30:00",
-        "exit_time": "2024-04-20 15:30:00",
-        "quantity": 100,
-        "risk": 50.0,
-        "max_loss": 100.0,
-        "max_profit": 200.0,
-        "risk_reward": 2.0
+        "scrip": res_dict.get("scrip", ""),
+        "action": res_dict.get("action", ""),
+        "entry": -1 if res_dict["entry"]=="" else float(res_dict["entry"]),
+        "exit": -1 if res_dict["exit"]=="" else float(res_dict["exit"]),
+        "entry_time": entryT,
+        "exit_time": exitT,
+        "quantity": 1 if res_dict["quantity"]=="" else int(res_dict["quantity"]),
+        "risk": -1 if res_dict["risk"]=="" else float(res_dict["risk"]),
+        "max_loss": -1 if res_dict["max_loss"]=="" else float(res_dict["max_loss"]),
+        "max_profit": -1 if res_dict["max_profit"]=="" else float(res_dict["max_profit"]),
+        "risk_reward": -1 if res_dict["risk_reward"]=="" else float(res_dict["risk_reward"])
     }
-   
+    
     return StrategyModel(**processed_strategy_data)
+
 
 @router.get("/strategy/description", response_model=StrategyDescription)
 async def get_strategy_description():
