@@ -14,17 +14,17 @@ router = APIRouter()
 @router.post("/strategy/interpret", response_model=StrategyModel,include_in_schema=False)
 async def submit_strategy(strategy: Strategy):
 
+    # insufficient data
+    if len(strategy.strategy) < 20 :
+        raise HTTPException(status_code=404, detail="Insufficient prompt. Please provide a prompt with at least 25 characters")
     
                  
     # Instance of gemini class
     gemini = Gemini()
     response = gemini.send_prompt(strategy.strategy,history=history,instruction=instruction)
-   
     data_clean  = DataClean()
     pure_res = data_clean.remove_noise(string=response)
-    
     res_dict = {key: value for key, value in json.loads(pure_res).items()}
-    
     processed_strategy_data = {
         "scrip": res_dict.get("scrip", ""),
         "action": res_dict.get("action", ""),
