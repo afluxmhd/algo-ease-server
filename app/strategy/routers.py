@@ -32,7 +32,7 @@ async def submit_strategy(strategy: Strategy):
         "exit": -1 if res_dict["exit"]=="" else float(res_dict["exit"]),
         "entry_time": res_dict.get("entry_time", ""),
         "exit_time": res_dict.get("exit_time", ""),
-        "quantity": -1 if res_dict["quantity"]=="" else int(res_dict["quantity"]),
+        "quantity": 1 if res_dict["quantity"]=="" else int(res_dict["quantity"]),
         "risk": -1 if res_dict["risk"]=="" else float(res_dict["risk"]),
         "max_loss": -1 if res_dict["max_loss"]=="" else float(res_dict["max_loss"]),
         "max_profit": -1 if res_dict["max_profit"]=="" else float(res_dict["max_profit"]),
