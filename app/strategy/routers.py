@@ -17,7 +17,6 @@ async def submit_strategy(strategy: Strategy):
 
     # insufficient data
     words = strategy.strategy.split()
-    print(words)
     if len(words) < 10 :
         raise HTTPException(status_code=400, detail="Insufficient prompt. Please provide a prompt with at least 25 characters")
     
@@ -35,6 +34,7 @@ async def submit_strategy(strategy: Strategy):
     exitT = datemodify.enforce_iso8601(res_dict["exit_time"])
     
     
+    
     processed_strategy_data = {
         "scrip": res_dict.get("scrip", ""),
         "action": res_dict.get("action", ""),
@@ -48,6 +48,11 @@ async def submit_strategy(strategy: Strategy):
         "max_profit": -1 if res_dict["max_profit"]=="" else float(res_dict["max_profit"]),
         "risk_reward": -1 if res_dict["risk_reward"]=="" else float(res_dict["risk_reward"])
     }
+    
+    if float(processed_strategy_data["entry"]) < 0 and float(processed_strategy_data["exit"])>=0 :
+        raise HTTPException(status_code=400, detail="Entry price is required!")
+               
+    
     
     return StrategyModel(**processed_strategy_data)
 
