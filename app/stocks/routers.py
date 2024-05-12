@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from random import uniform
 from datetime import datetime
 from .models import StockReq,StockRes
-from .stock_simulation import stock_simulation
+from .stock_simulation import StockSimulation
 from datetime import datetime
 
 router = APIRouter()
