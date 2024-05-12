@@ -1,6 +1,6 @@
 from random import uniform
 from fastapi import  HTTPException
-class stock_simulation :
+class StockSimulation :
     def stock_price(self,status:str ,entry: float=0.0, exit: float=0.0, action : str=""):
         print(status,entry,exit,action,1)
         # case 1: It has no entry and no exit price.
