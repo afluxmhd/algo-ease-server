@@ -23,7 +23,15 @@ Algorithmic trading, the use of computer programs to execute trades based on pre
   <img src="https://github.com/afluxmhd/algo-ease-server/assets/91357996/9714d067-22e2-472d-9beb-580d5e8464d9" width="24%" />
   <img src="https://github.com/afluxmhd/algo-ease-server/assets/91357996/8a76c19d-7244-47ac-9e56-809907c7e7ee" width="24%" />
  <img src="https://github.com/afluxmhd/algo-ease-server/assets/91357996/b1bf6100-6b17-4d75-a293-91ef9aba1884" width="24%" />
+    <img src="https://github.com/afluxmhd/algo-ease-server/assets/93920274/9598ba35-8b80-4e03-ae31-2ec1202ee408" width="24%" />
+ <img src="https://github.com/afluxmhd/algo-ease-server/assets/93920274/515a246f-c17c-41fb-8ca2-baf90458c05b" width="24%" />
 </p>
+
+
+
+
+
+
 
 ## Getting Started
 
