@@ -1,4 +1,4 @@
-<p align="center"><img width=100% src="https://github.com/afluxmhd/algo-ease-server/assets/91357996/ea10753c-cacb-4cbd-a9d9-aa730fae87b5"></p>
+<p align="center"><img width=100% src="https://github.com/afluxmhd/algo-ease-server/assets/91357996/156c2a82-1471-48af-ace8-afea4190df0e"></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Python](https://img.shields.io/badge/python-v3.11+-blue.svg)
@@ -14,16 +14,15 @@ Algorithmic trading, the use of computer programs to execute trades based on pre
 - **Natural Language Strategy Submission:** Users can input trading strategies using plain language, describing conditions, parameters, and desired outcomes without requiring coding knowledge.
 - **Advanced NLP Interpretation:** Utilize advanced natural language processing techniques to accurately analyze user-submitted strategies, extracting key elements like buy/sell signals, entry/exit points, and risk management parameters.
 - **Model Creation:** Automatically translate interpreted strategies into a structured model suitable for algorithmic execution, capturing the core logic of the user's idea.
-- **Validation and Optimization:** Offer rigorous backtesting against historical data to evaluate strategy performance, identify risks, and optimize parameters before deployment.
-- **Deployment and Monitoring:** Enable deployment of successful strategies in live trading environments, with automated execution based on predefined rules. Continuously monitor performance and gather feedback for further adjustments and optimization.
+- **Deployment and Monitoring:** Enable deployment of successful strategies in live trading environments, with automated execution based on predefined rules. 
 
 ## Screenshots
 
 <p align="center">
-  <img src="" width="24%" />
-  <img src="" width="24%" />
-  <img src="" width="24%" />
- <img src="" width="24%" />
+  <img src="https://github.com/afluxmhd/algo-ease-server/assets/91357996/a467272e-8410-41da-a72d-d3ee2246c7e7" width="24%" />
+  <img src="https://github.com/afluxmhd/algo-ease-server/assets/91357996/9714d067-22e2-472d-9beb-580d5e8464d9" width="24%" />
+  <img src="https://github.com/afluxmhd/algo-ease-server/assets/91357996/8a76c19d-7244-47ac-9e56-809907c7e7ee" width="24%" />
+ <img src="https://github.com/afluxmhd/algo-ease-server/assets/91357996/b1bf6100-6b17-4d75-a293-91ef9aba1884" width="24%" />
 </p>
 
 ## Getting Started
@@ -54,34 +53,19 @@ pip install -r requirements.txt
 ```
 
 4. Open the project in your preferred  IDE or editor.
-5. Create your environment variables and add your API key to the  file as described in the .env.sample file.
-6. Run the app on your  device :
+5. Create a new file named .env inside the source folder.
+6. Add the following code to the .env file
+```bash
+GOOGLE_API_KEY='YOUR_API_KEY'
+```
+8. Run the server on your  device :
    
 ```bash
 Python -m uvicorn app.api:app --reload
 ```
 
-## Contributing
+## Authors
 
-If you would like to contribute to the project, feel free to fork the repository and submit a pull request with your changes. Contributions and improvements are always welcome!
-
-## Acknowledgments
-
-We would like to express our gratitude to the following individuals and organizations for their contributions, support, and inspiration in the development of AlgoEase:
-
-- **Open Source Community**:
-  - We extend our thanks to the vibrant open-source community for their invaluable contributions, feedback, and collaboration. AlgoEase relies on numerous open-source libraries and frameworks, and we appreciate the dedication of developers worldwide.
-
-- **Academic Research**:
-  - We acknowledge the contributions of researchers and scholars whose work in natural language processing (NLP), machine learning, and algorithmic trading has paved the way for innovations in our project. Their insights and discoveries continue to shape the evolution of AlgoEase.
-
-- **Beta Testers**:
-  - Our heartfelt thanks to all beta testers who volunteered their time and provided valuable feedback during the testing phase. Your input helped us identify bugs, improve user experience, and refine the features of AlgoEase.
-
-- **Advisors and Mentors**:
-  - We are grateful to our advisors and mentors who provided guidance, expertise, and encouragement throughout the development process. Their insights and support were instrumental in shaping the direction and goals of AlgoEase.
-
-- **Users and Contributors**:
-  - Last but not least, we extend our appreciation to all users and contributors who have joined us on this journey. Your enthusiasm, suggestions, and contributions drive our commitment to delivering a powerful, user-friendly platform for algorithmic trading.
-
-This project would not have been possible without the collective efforts of these individuals and communities. Thank you for being part of the AlgoEase community and for your ongoing support.
+<a href="https://github.com/afluxmhd/algo-ease-server/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=afluxmhd/algo-ease-server" />
+</a>
