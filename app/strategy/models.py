@@ -16,6 +16,7 @@ class StrategyModel(BaseModel):
     max_loss: float
     max_profit: float
     risk_reward: float
+    description:str
 
 
 class StrategyDescription(BaseModel):

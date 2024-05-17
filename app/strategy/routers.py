@@ -6,6 +6,7 @@ from .gemini.gemini import Gemini
 from .data_extraction import DataClean
 from .strategy_config import history,instruction
 from .date_utils import date_modify
+from .description import ModelDescription
 import json
 
 
@@ -46,8 +47,17 @@ async def submit_strategy(strategy: Strategy):
         "risk": -1 if res_dict["risk"]=="" else float(res_dict["risk"]),
         "max_loss": -1 if res_dict["max_loss"]=="" else float(res_dict["max_loss"]),
         "max_profit": -1 if res_dict["max_profit"]=="" else float(res_dict["max_profit"]),
-        "risk_reward": -1 if res_dict["risk_reward"]=="" else float(res_dict["risk_reward"])
+        "risk_reward": -1 if res_dict["risk_reward"]=="" else float(res_dict["risk_reward"]),
+        "description": ""
     }
+    
+    
+    # Model Description
+    model_discription =  ModelDescription()
+    discroption_text = model_discription.get_model_description(processed_strategy_data)
+    processed_strategy_data["description"]=discroption_text
+    
+    
     
     if float(processed_strategy_data["entry"]) < 0 and float(processed_strategy_data["exit"])>=0 :
         raise HTTPException(status_code=400, detail="Entry price is required!")
