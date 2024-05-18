@@ -16,7 +16,7 @@ Algorithmic trading, the use of computer programs to execute trades based on pre
 - **Model Creation:** Automatically translate interpreted strategies into a structured model suitable for algorithmic execution, capturing the core logic of the user's idea.
 - **Deployment and Monitoring:** Enable deployment of successful strategies in live trading environments, with automated execution based on predefined rules. 
 
-## Screenshots
+## Client Side Screenshot
 
 <p align="center">
   <img src="https://github.com/afluxmhd/algo-ease-server/assets/91357996/a467272e-8410-41da-a72d-d3ee2246c7e7" width="24%" />
@@ -25,7 +25,14 @@ Algorithmic trading, the use of computer programs to execute trades based on pre
  <img src="https://github.com/afluxmhd/algo-ease-server/assets/91357996/b1bf6100-6b17-4d75-a293-91ef9aba1884" width="24%" />
     <img src="https://github.com/afluxmhd/algo-ease-server/assets/93920274/9598ba35-8b80-4e03-ae31-2ec1202ee408" width="24%" />
  <img src="https://github.com/afluxmhd/algo-ease-server/assets/93920274/515a246f-c17c-41fb-8ca2-baf90458c05b" width="24%" />
+    <img src="https://github.com/afluxmhd/algo-ease-server/assets/93920274/3495c40c-5cd6-44b9-99ce-6a336c47eefd" width="24%" />
+ <img src="https://github.com/afluxmhd/algo-ease-server/assets/93920274/3f751fef-e3e0-4f7f-951e-c039e4ec3357" width="24%" />
+
+  
 </p>
+
+
+
 
 
 
