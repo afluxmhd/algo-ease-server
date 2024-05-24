@@ -6,6 +6,7 @@ from .gemini.gemini import Gemini
 from .data_extraction import DataClean
 from .strategy_config import history,instruction
 from .date_utils import date_modify
+from .description import ModelDescription
 import json
 
 
@@ -19,8 +20,7 @@ async def submit_strategy(strategy: Strategy):
     words = strategy.strategy.split()
     if len(words) < 10 :
         raise HTTPException(status_code=400, detail="Insufficient prompt. Please provide a prompt with at least 25 characters")
-    
-                 
+                
     # Instance of gemini class
     gemini = Gemini()
     response = gemini.send_prompt(strategy.strategy,history=history,instruction=instruction)
@@ -33,8 +33,6 @@ async def submit_strategy(strategy: Strategy):
     entryT = datemodify.enforce_iso8601(res_dict["entry_time"])
     exitT = datemodify.enforce_iso8601(res_dict["exit_time"])
     
-    
-    
     processed_strategy_data = {
         "scrip": res_dict.get("scrip", ""),
         "action": res_dict.get("action", ""),
@@ -46,7 +44,7 @@ async def submit_strategy(strategy: Strategy):
         "risk": -1 if res_dict["risk"]=="" else float(res_dict["risk"]),
         "max_loss": -1 if res_dict["max_loss"]=="" else float(res_dict["max_loss"]),
         "max_profit": -1 if res_dict["max_profit"]=="" else float(res_dict["max_profit"]),
-        "risk_reward": -1 if res_dict["risk_reward"]=="" else float(res_dict["risk_reward"])
+        "risk_reward": -1 if res_dict["risk_reward"]=="" else float(res_dict["risk_reward"]),
     }
     
     if float(processed_strategy_data["entry"]) < 0 and float(processed_strategy_data["exit"])>=0 :
@@ -55,6 +53,14 @@ async def submit_strategy(strategy: Strategy):
     
     
     return StrategyModel(**processed_strategy_data)
+
+@router.post("/strategy/model/description")
+async def get_model_description(json_data: dict):
+    print(json_data)
+    # Model Description
+    model_discription =  ModelDescription()
+    descriptive_text = model_discription.get_model_description(json_data)
+    return {"description":descriptive_text}
 
 
 @router.get("/strategy/description", response_model=StrategyDescription)
