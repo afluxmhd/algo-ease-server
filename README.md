@@ -84,3 +84,4 @@ Python -m uvicorn app.api:app --reload
 <a href="https://github.com/afluxmhd/algo-ease-server/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=afluxmhd/algo-ease-server" />
 </a>
+
